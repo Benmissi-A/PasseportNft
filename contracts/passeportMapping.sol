@@ -53,7 +53,7 @@ contract Passeport is ERC721 {
         _skills[msg.sender] = skills_;
         _worker[msg.sender] = true;
 
-        emit RegisterdWorker(msg.sender , _pseudo[msg.sender], _age[msg.sender], _country[msg.sender], _lang[msg.sender], _skills[msg.sender])
+        emit RegisterdWorker(msg.sender , _pseudo[msg.sender], _age[msg.sender], _country[msg.sender], _lang[msg.sender], _skills[msg.sender]);
     }
 
     function registerPro(string memory pseudo_) public {
@@ -75,26 +75,26 @@ contract Passeport is ERC721 {
         _lang[msg.sender] = lang_;
         _skills[msg.sender] = skills_;
 
-        emit ModifiedWorker(msg.sender , _pseudo[msg.sender], _age[msg.sender], _country[msg.sender], _lang[msg.sender], _skills[msg.sender])
+        emit ModifiedWorker(msg.sender , _pseudo[msg.sender], _age[msg.sender], _country[msg.sender], _lang[msg.sender], _skills[msg.sender]);
     }
     // TODO : worker defini son prix
 
 
     // TODO : pro paie le worker
 
+/*
     function payWorker() public {
-        require(_worker[msg.sender] == false, "PasseportNFT: only pro can use this function"");
-        require(_pro[msg.sender] == true, "PasseportNFT: only pro can use this function"");
-
+        require(_worker[msg.sender] == false, "PasseportNFT: only pro can use this function");
+        require(_pro[msg.sender] == true, "PasseportNFT: only pro can use this function");
     }
-
+*/
     //function view 
     //TODO : balanceOf a modifier
 
-    function balanceOf(address user) public view returns (uint256) {
-        require(user == _register, "PasseportNFT: you are not registred");
-        require(owner != address(0), "PasseportNFT: balance query for the zero address");
-        return _balance[_register];
+    function balancesOf(address user_) public view returns (uint256) {
+        require(_worker[user_] == true, "PasseportNFT: you are not registred");
+        require(user_ != address(0), "PasseportNFT: balance query for the zero address");
+        return _balances[user_];
     }
 
     //TODO faire les fonction view pour chacuns des states du worker
@@ -103,24 +103,25 @@ contract Passeport is ERC721 {
         return _pseudo[user_];
     }
     function getAge (address user_) public view returns (uint256) {
-        return _age[user];
+        return _age[user_];
     }
     function getCountry (address user_) public view returns (string memory) {
-        return _country[user];
+        return _country[user_];
     }
 
     function getLang (address user_) public view returns (string memory) {
-        return _lang[user];
+        return _lang[user_];
     }
 
     function getSkills (address user_) public view returns (string memory) {
-        return _skills[user];
+        return _skills[user_];
     }
 // optinnal to check status
     function getStatus (address user_) public view returns (uint256) {
+        uint256 status = 0;
         if(_worker[user_] == true) return 1;
-        if(_pro[user_] == true]) return 2;
-        if(_worker[user_] != true] && _worker[user_] != true) return 0;
-
+        if(_pro[user_] == true) return 2;
+        return status ;
+    }
 
 }
