@@ -1,5 +1,5 @@
 {
-  "name": "ComEth",
+  "name": "PasseportNFT-contracts",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -26,9 +26,9 @@
     "prettier-plugin-solidity": "^1.0.0-beta.13",
     "solhint": "^3.3.6"
   },
-  "description": "Decentralized comunity with Dao and wallet multisig",
-  "repository": "https://github.com/Benmissi-A/ComEth.git",
-  "author": "Benmissi-A LokiDieKatze GuillaumeB75 Stella Soler",
+  "description": "Hiring plateform for developpers",
+  "repository": "https://github.com/StellaGreen/PasseportNft.git",
+  "author": "Stella Soler Benlissi-A",
   "dependencies": {
     "@openzeppelin/contracts": "^4.3.1",
     "n": "^7.3.1"
